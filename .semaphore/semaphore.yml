@@ -29,15 +29,6 @@ blocks:
           - echo $APP_ENV
           - echo "Install CLI..."
           - echo "done"
-      - name: Check it
-        commands:
-          - checkout
-          - ls -1
-          - ant -version
-          - sfdx
-          - echo $APP_ENV
-          - echo "Check it..."
-          - echo "done"          
   - name: "Smoke tests"
     task:
       jobs:
