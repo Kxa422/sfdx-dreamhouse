@@ -11,19 +11,33 @@ blocks:
         - name: APP_ENV
           value: prod
       jobs:
-      - name: Docker build
+      - name: Install ant
         commands:
-          - checkout
+          - ls -1
+          - sudo apt -y update && sudo apt -y install ant
+          - ant -version
+          - echo $APP_ENV
+          - echo "Install ant..."
+          - echo "done"
+      - name: Install CLI
+        commands:
           - ls -1
           - mkdir sfdx
           - wget -qO- https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz | tar xJ -C sfdx --strip-components 1
           - ./sfdx/install
           - sfdx
-          - sudo apt -y update && sudo apt -y install ant
-          - ant -version
           - echo $APP_ENV
-          - echo "Docker build..."
+          - echo "Install CLI..."
           - echo "done"
+      - name: Check it
+        commands:
+          - checkout
+          - ls -1
+          - ant -version
+          - sfdx
+          - echo $APP_ENV
+          - echo "Check it..."
+          - echo "done"          
   - name: "Smoke tests"
     task:
       jobs:
