@@ -15,8 +15,10 @@ blocks:
         commands:
           - checkout
           - ls -1
-          - sudo apt-get install ant
-          - ant -version
+          - mkdir sfdx
+          - wget -qO- https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz | tar xJ -C sfdx --strip-components 1
+          - ./sfdx/install
+          - sfdx
           - echo $APP_ENV
           - echo "Docker build..."
           - echo "done"
