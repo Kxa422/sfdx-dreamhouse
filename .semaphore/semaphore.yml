@@ -15,7 +15,8 @@ blocks:
         commands:
           - checkout
           - ls -1
-          - sudo apt install ant
+          - sudo apt-get install ant
+          - ant -version
           - echo $APP_ENV
           - echo "Docker build..."
           - echo "done"
