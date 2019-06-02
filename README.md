@@ -1,7 +1,4 @@
 # SFDX Dreamhouse App
-
-    <a href=https://github.com/Kxa422/sfdx-dreamhouse/graphs/contributors" alt="Contributors">
-        <img src="https://img.shields.io/github/contributors/badges/shields.svg" /></a>
         
 ## Salesforce DX Quick Start
 
