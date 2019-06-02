@@ -1,5 +1,8 @@
 # SFDX Dreamhouse App
 
+    <a href=https://github.com/Kxa422/sfdx-dreamhouse/graphs/contributors" alt="Contributors">
+        <img src="https://img.shields.io/github/contributors/badges/shields.svg" /></a>
+        
 ## Salesforce DX Quick Start
 
 > **Important:** Salesforce DX is available as a Pilot. Salesforce DX isn’t generally available unless or until Salesforce announces its general availability in documentation or in press releases or public statements. All commands, parameters, and other features are subject to change or deprecation at any time, with or without notice. Take care when implementing functionality developed with these commands or tools.</td>
