@@ -1,12 +1,11 @@
 ({
-	previousPage : function(component, event) {
-        var myEvent = $A.get("e.c:PropertyPageChange");
-        myEvent.setParams({ "direction": "previous"});
-        myEvent.fire();
+	previousPage : function(component) {
+        var pageChangeEvent = component.getEvent("pagePrevious");
+        pageChangeEvent.fire();
 	},
-	nextPage : function(component, event) {
-        var myEvent = $A.get("e.c:PropertyPageChange");
-        myEvent.setParams({ "direction": "next"});
-        myEvent.fire();
+    
+	nextPage : function(component) {
+        var pageChangeEvent = component.getEvent("pageNext");
+        pageChangeEvent.fire();
 	}
 })

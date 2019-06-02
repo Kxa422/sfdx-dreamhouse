@@ -4,25 +4,20 @@
     <aura:attribute name="pages" type="integer"/>
     <aura:attribute name="total" type="integer"/>
     
-    <aura:registerEvent name="propertyPageChange" type="c:PropertyPageChange"/>
+    <aura:registerEvent name="pagePrevious" type="c:PropertyPageChange"/>
+    <aura:registerEvent name="pageNext" type="c:PropertyPageChange"/>
     
     <div class="container">
         <div class="left">
-            <aura:renderIf isTrue="{!v.page > 1}">
-                <button class="slds-button slds-button--icon-border" onclick="{!c.previousPage}">
-           	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#left" />
-            		<span class="slds-assistive-text">Previous Page</span>
-          		</button>
-            </aura:renderIf>
+            <aura:if isTrue="{!v.page > 1}">
+                <lightning:buttonIcon iconName="utility:left" variant="border" onclick="{!c.previousPage}"/>
+            </aura:if>
         </div>
-        <div class="centered">{!v.total} properties • page {!v.page} / {!v.pages}</div>
+        <div class="centered">{!v.total} properties • page {!v.page} of {!v.pages}</div>
         <div class="right">
-            <aura:renderIf isTrue="{!v.page &lt; v.pages}">
-                <button class="slds-button slds-button--icon-border" onclick="{!c.nextPage}">
-           	        <c:svg class="slds-button__icon" xlinkHref="/resource/SLDS100/assets/icons/utility-sprite/svg/symbols.svg#right" />
-            		<span class="slds-assistive-text">Next Page</span>
-          		</button>
-            </aura:renderIf>
+            <aura:if isTrue="{!v.page &lt; v.pages}">
+                <lightning:buttonIcon iconName="utility:right" variant="border" onclick="{!c.nextPage}"/>
+            </aura:if>
         </div>
 	</div>
     
