@@ -81,7 +81,9 @@ jobs:
       - run:
           name: Run Apex Tests
           command: |
-              node_modules/sfdx-cli/bin/run force:apex:test:run -u ciorg -c -r human
+              node_modules/sfdx-cli/bin/run force:apex:test:run -u ciorg -c -r junit -d tests
+      - store_test_results:
+          path: tests/test-result.xml
   cleanup_scratch_org:
     <<: *defaults
     steps:
