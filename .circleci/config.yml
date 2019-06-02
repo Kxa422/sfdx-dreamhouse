@@ -104,7 +104,7 @@ workflows:
             - setup_dx
           filters:
             branches:
-              ignore: master
+              only: master
       - create_and_test_package:
           requires:
             - setup_dx
@@ -116,7 +116,7 @@ workflows:
             - deploy_source
           filters:
             branches:
-              ignore: master
+              only: master
       - cleanup_scratch_org:
           requires:
             - setup_dx
