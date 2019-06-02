@@ -2,10 +2,6 @@
         
 ## Salesforce DX Quick Start
 
-[![star this repo](http://githubbadges.com/star.svg)](https://github.com/Kxa422/sfdx-dreamhouse)
-[![fork this repo](http://githubbadges.com/fork.svg)](https://github.com/Kxa422/sfdx-dreamhouse/fork)
-
-
 > **Important:** Salesforce DX is available as a Pilot. Salesforce DX isn’t generally available unless or until Salesforce announces its general availability in documentation or in press releases or public statements. All commands, parameters, and other features are subject to change or deprecation at any time, with or without notice. Take care when implementing functionality developed with these commands or tools.</td>
 
 The Salesforce Developer Experience (SFDX) starts with source code living in your version control system (VCS). It doesn’t matter which VCS you use, only that you use one. In this quick start, we’ll assume you’re using Git and Github, as this is where we’ve stored the Dreamforce ’16 Developer Keynote sample application, called the DreamHouse app, which we will use for this quick start.
