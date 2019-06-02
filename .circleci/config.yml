@@ -84,6 +84,8 @@ jobs:
               node_modules/sfdx-cli/bin/run force:apex:test:run -u ciorg -c -r junit -d tests
       - store_test_results:
           path: tests
+      - store_artifacts:
+          path: tests
   cleanup_scratch_org:
     <<: *defaults
     steps:
