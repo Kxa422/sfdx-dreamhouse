@@ -45,6 +45,7 @@ jobs:
           name: Remove XML
           command: |
               rm tests/Salesforce/test-result-7*.xml
+          when: always
       - store_test_results:
           path: tests
       - store_artifacts:
