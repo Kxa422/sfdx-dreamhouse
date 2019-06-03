@@ -37,7 +37,13 @@ jobs:
           name: Authenticate TestOrg
           command: |
               node_modules/sfdx-cli/bin/run force:auth:sfdxurl:store -f sfdxurl.txt -a TestOrg
+      - run:
+          name: Run tests
+          command: |
               node_modules/sfdx-cli/bin/run force:apex:test:run -u TestOrg -c -r junit -d tests/Salesforce
+      - run:
+          name: Remove XML
+          command: |
               rm tests/Salesforce/test-result-7*.xml
       - store_test_results:
           path: tests
