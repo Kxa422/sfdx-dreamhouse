@@ -34,13 +34,14 @@ jobs:
           command: |
               node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername -a HubOrg
       - run:
-          name: Define CI Org
-          # We define the to be used CI org. Based on the branch we either create a new scratch org
-          # or we use a project variable to authenticate a UAT or full-copy sandbox as target org.
-          #
-          # You can get the sfdxurl via sfdx force:org:display -u yourOrg --json --verbose from your local machine.
+          name: Authenticate TestOrg
           command: |
-              node_modules/sfdx-cli/bin/run force:org:create -v HubOrg -s -f config/project-scratch-def.json -a ciorg -d 1
+              node_modules/sfdx-cli/bin/run force:auth:sfdxurl:store -f sfdxurl.txt -a TestOrg
+              node_modules/sfdx-cli/bin/run force:apex:test:run -u TestOrg -c -r junit -d tests/Salesforce
+      - store_test_results:
+          path: tests
+      - store_artifacts:
+          path: tests
       - persist_to_workspace:
           # This is an important step. If we don't store the project data (cloned GitHub source and node_modules from the CLI installation)
           # we'd have to re-run installation for every workflow step.
@@ -106,19 +107,19 @@ workflows:
             - setup_dx
           filters:
             branches:
-              only: master
+              ignore: master
       - create_and_test_package:
           requires:
             - setup_dx
           filters:
             branches:
-              only: master
+              ignore: master
       - run_apex_tests:
           requires:
             - deploy_source
           filters:
             branches:
-              only: master
+              ignore: master
       - cleanup_scratch_org:
           requires:
             - setup_dx
