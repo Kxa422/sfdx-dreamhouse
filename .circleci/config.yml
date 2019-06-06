@@ -50,6 +50,9 @@ jobs:
       - run:
           name: Remove XML
           command: |
+              cd tests
+              cp Salesforce/test-result-codecoverage.json .
+              bash <(curl -s https://codecov.io/bash) -t 0b319369-930a-4af8-b71f-7dc02134a985
               rm tests/Salesforce/test-result-7*.xml
           when: always
       - store_test_results:
