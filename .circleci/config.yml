@@ -42,6 +42,12 @@ jobs:
           command: |
               node_modules/sfdx-cli/bin/run force:apex:test:run -u TestOrg -c -r junit -d tests/Salesforce
       - run:
+          name: Deploy test result
+          command: |
+              cd tests
+              cp Salesforce/test-result-codecoverage.json .
+              bash <(curl -s https://codecov.io/bash) -t 0b319369-930a-4af8-b71f-7dc02134a985
+      - run:
           name: Remove XML
           command: |
               rm tests/Salesforce/test-result-7*.xml
