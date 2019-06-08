@@ -45,7 +45,7 @@ jobs:
           name: Remove XML
           command: |
               cd tests
-              bash <(curl -s https://codecov.io/bash) -t 0b319369-930a-4af8-b71f-7dc02134a985 -d
+              bash <(curl -s https://codecov.io/bash) -t 0b319369-930a-4af8-b71f-7dc02134a985
               rm Salesforce/test-result-7*.xml
           when: always
       - store_test_results:
