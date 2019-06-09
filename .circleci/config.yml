@@ -22,6 +22,13 @@ jobs:
     steps:
       - checkout
       - run:
+          name: Install Sonar Scan
+          command: |
+              wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+              unzip sonar-scanner-cli-3.3.0.1492-linux.zip
+              rm sonar-scanner-cli-3.3.0.1492-linux.zip
+              ls -altr sonar-scanner-cli-3.3.0.1492-linux
+      - run:
           name: Install Salesforce DX
           command: |
               export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
