@@ -4,10 +4,17 @@
 
 ![dreamhouse-logo](dreamhouse-logo.png)
 
-[![CircleCI](https://circleci.com/gh/Kxa422/sfdx-dreamhouse.svg?style=svg)](https://circleci.com/gh/Kxa422/sfdx-dreamhouse)
-[![CircleCI](https://img.shields.io/circleci/build/github/Kxa422/sfdx-dreamhouse.svg?style=flat-square)](https://circleci.com/gh/Kxa422/sfdx-dreamhouse)
+## CircleCI
 
-[![CircleCI](https://circleci.com/gh/Kxa422/sfdx-dreamhouse.svg?style=shield)](https://circleci.com/gh/Kxa422/sfdx-dreamhouse)
+[![CircleCI](https://circleci.com/gh/Kxa422/sfdx-dreamhouse.svg?style=svg)](https://circleci.com/gh/Kxa422/sfdx-dreamhouse)
+
+## SonarCloud
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Kxa422_sfdx-dreamhouse&metric=alert_status)](https://sonarcloud.io/dashboard?id=Kxa422_sfdx-dreamhouse)
+
+[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=Kxa422_sfdx-dreamhouse&metric=coverage)](https://sonarcloud.io/dashboard?id=Kxa422_sfdx-dreamhouse)
+
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=Kxa422_sfdx-dreamhouse&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=Kxa422_sfdx-dreamhouse)
+
 
 
 Dreamhouse is a sample application for the real estate business built on the Salesforce platform. It allows brokers to manage their properties and customers to find their dream house.
