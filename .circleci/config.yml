@@ -22,14 +22,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Install Sonar Scan
-          command: |
-              wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
-              unzip sonar-scanner-cli-3.3.0.1492-linux.zip
-              rm sonar-scanner-cli-3.3.0.1492-linux.zip
-              ls -altr sonar-scanner-3.3.0.1492-linux/*
-              ./sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner -help
-      - run:
           name: Install Salesforce DX
           command: |
               export SFDX_USE_GENERIC_UNIX_KEYCHAIN=true
@@ -37,10 +29,6 @@ jobs:
               npm install sfdx-cli
               node_modules/sfdx-cli/bin/run --version
               node_modules/sfdx-cli/bin/run plugins --core
-      - run:
-          name: Authenticate DevHub
-          command: |
-              node_modules/sfdx-cli/bin/run force:auth:jwt:grant --clientid $CONSUMERKEY --jwtkeyfile assets/server.key --username $USERNAME --setdefaultdevhubusername -a HubOrg
       - run:
           name: Authenticate TestOrg
           command: |
@@ -52,6 +40,10 @@ jobs:
       - run:
           name: Remove XML
           command: |
+              wget -q https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-3.3.0.1492-linux.zip
+              unzip sonar-scanner-cli-3.3.0.1492-linux.zip
+              rm sonar-scanner-cli-3.3.0.1492-linux.zip
+              ls -altr sonar-scanner-3.3.0.1492-linux/*
               ./sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner -D"sonar.projectKey=Kxa422_sfdx-dreamhouse" -D"sonar.organization=kxa422-github" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io" -D"sonar.login=c54cbb7a886d69d9166c0c0f9f866217726e5a22" -D"sonar.apex.coverage.reportPath=tests/Salesforce/test-result-codecoverage.json"
               cd tests
               bash <(curl -s https://codecov.io/bash) -t 0b319369-930a-4af8-b71f-7dc02134a985
