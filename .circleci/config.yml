@@ -28,7 +28,7 @@ jobs:
               unzip sonar-scanner-cli-3.3.0.1492-linux.zip
               rm sonar-scanner-cli-3.3.0.1492-linux.zip
               ls -altr sonar-scanner-3.3.0.1492-linux/*
-              ./sonar-scanner-3.3.0.1492-linux/sonar-scanner -help
+              ./sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner -help
       - run:
           name: Install Salesforce DX
           command: |
@@ -52,7 +52,7 @@ jobs:
       - run:
           name: Remove XML
           command: |
-              ./sonar-scanner-3.3.0.1492-linux/sonar-scanner -D"sonar.projectKey=Kxa422_sfdx-dreamhouse" -D"sonar.organization=kxa422-github" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io" -D"sonar.login=c54cbb7a886d69d9166c0c0f9f866217726e5a22" -D"sonar.apex.coverage.reportPath=tests/Salesforce/test-result-codecoverage.json"
+              ./sonar-scanner-3.3.0.1492-linux/bin/sonar-scanner -D"sonar.projectKey=Kxa422_sfdx-dreamhouse" -D"sonar.organization=kxa422-github" -D"sonar.sources=." -D"sonar.host.url=https://sonarcloud.io" -D"sonar.login=c54cbb7a886d69d9166c0c0f9f866217726e5a22" -D"sonar.apex.coverage.reportPath=tests/Salesforce/test-result-codecoverage.json"
               cd tests
               bash <(curl -s https://codecov.io/bash) -t 0b319369-930a-4af8-b71f-7dc02134a985
               rm Salesforce/test-result-7*.xml
