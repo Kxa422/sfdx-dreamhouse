@@ -6,7 +6,8 @@
 
 ## CircleCI
 
-![CircleCI](https://img.shields.io/circleci/build/gh/Kxa422/sfdx-dreamhouse/master.svg)
+[![CircleCI](https://img.shields.io/circleci/build/gh/Kxa422/sfdx-dreamhouse/master.svg)](https://circleci.com/gh/Kxa422/sfdx-dreamhouse)
+[![CircleCI](https://circleci.com/gh/Kxa422/sfdx-dreamhouse.svg?style=svg)](https://circleci.com/gh/Kxa422/sfdx-dreamhouse)
 
 ## SonarCloud
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Kxa422_sfdx-dreamhouse&metric=alert_status)](https://sonarcloud.io/dashboard?id=Kxa422_sfdx-dreamhouse)
