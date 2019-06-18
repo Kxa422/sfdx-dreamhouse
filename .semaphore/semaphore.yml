@@ -29,6 +29,24 @@ blocks:
           - echo $APP_ENV
           - echo "Install CLI..."
           - echo "done"
+          - sfdx force:auth:sfdxurl:store -f sfdxurl.txt -a TestOrg
+          - sfdx force:apex:test:run -u TestOrg -c -r junit -d tests/Salesforce
+          - export UNIT_TESTS_RUN_ID=$(cat tests/Salesforce/test-run-id.txt)
+          - echo $UNIT_TESTS_RUN_ID
+          - export UNIT_TESTS_FINAL_VALUE=$(cat "tests/Salesforce/test-result-$UNIT_TESTS_RUN_ID.json" | jq '.summary.orgWideCoverage' -r | sed 's/%//')
+          - export UNIT_TESTS_FINAL_STATUS=$(cat "tests/Salesforce/test-result-$UNIT_TESTS_RUN_ID.json" | jq '.summary.outcome' -r)
+          - export UNIT_TESTS_RAN=$(cat "tests/Salesforce/test-result-$UNIT_TESTS_RUN_ID.json" | jq '.summary.testsRan' -r)
+          - export UNIT_TESTS_USER=$(cat "tests/Salesforce/test-result-$UNIT_TESTS_RUN_ID.json" | jq '.summary.username' -r)
+          - export UNIT_TESTS_PASSING=$(cat "tests/Salesforce/test-result-$UNIT_TESTS_RUN_ID.json" | jq '.summary.passing' -r)
+          - export UNIT_TESTS_FAILING=$(cat "tests/Salesforce/test-result-$UNIT_TESTS_RUN_ID.json" | jq '.summary.failing' -r)
+          - export UNIT_TESTS_SKIPPED=$(cat "tests/Salesforce/test-result-$UNIT_TESTS_RUN_ID.json" | jq '.summary.skipped' -r)
+          - export UNIT_TESTS_COLOR=#36a64f
+          - export SLACK_MESSAGE="All "
+          - if [ "$UNIT_TESTS_FINAL_STATUS" == "Failed" ]; then SLACK_MESSAGE=$UNIT_TESTS_FAILING ;  fi
+          - if [ "$UNIT_TESTS_FINAL_STATUS" == "Failed" ]; then UNIT_TESTS_COLOR=#FF0000;  fi
+          - if [ "$UNIT_TESTS_FINAL_VALUE" -lt 75 ]; then UNIT_TESTS_COLOR=#FF0000;  fi
+          - echo $SLACK_MESSAGE
+          - echo $UNIT_TESTS_COLOR
   - name: "Smoke tests"
     task:
       jobs:
